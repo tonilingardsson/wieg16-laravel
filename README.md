@@ -1,55 +1,53 @@
-# Övningar för Lektion 5: Laravel
-Repetition är kunskapens moder!
-Ni skall nu göra om övning 3 från lektion 2 i Laravel och sedan även göra om övningarna från lektion 3 (API:er) i Laravel.
-## Övning 1
-Hämta data via cURL från https://www.milletech.se/invoicing/export/customers.
-Ta den tabellstruktur som ni gjort tidigare och skriv in den som migrationer i Laravel.
-Det skall finnas en migration för varje tabell.
-Efter att du har gjort färdigt dina migrationer och testat dem så skriver du ett artisankommando för att importera kunderna.
+<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
-1. Gör migrationer via php artisan make:migration - en för varje tabell
-2. Gör ett konsollkommando via  php artisan make:command ImportCustomers
-3. Ge kommandot signaturen import:customers
-4. Allting görs i handle-metoden!
-5. Ta curl-koden från den gemensamma övningen. Du behöver inte spara datan i en fil nu.
-6. Gör en Customer-modell via php artisan make:model Customer
-7. Justera modellens inställningar så att id inte är autoinkrementerande och timestamps är avstängt.
-8. Skriv en whitelist via $fillable som innehåller alla fält i tabellen.
-9. Gör hela modell-biten för din adresstabell också.
-10. Loopa igenom datan och sätt in datan i databasen via dina modeller.
-11. Kolla om modellen redan finns via Customer::find($id). Om modellen inte finns så blir det null.
-12. Om modellen inte redan finns gör en ny via $customer = new Customer();
-13. Spara med $customer->save()
-14. Gör samma sak med adresserna!
+<p align="center">
+<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
+</p>
 
-## Övning 2
-Nu är det dags att börja exponera den data som du hämtat hem i Laravel.
-Enligt god REST-sed så skall det finnas en route som heter /customers som motsvarar Customer som resurs och modell.
-Gör en controller som heter CustomersController och en modell för customers-tabellen som heter Customer.
-/customers skall skriva ut all data från tabellen i json-format på skärmen.
-Skicka lämplig header för att visa att det är json-data du skickar och inte vanlig html.
-## Övning 3
-Bygg vidare så att man kan hämta ut en kund i taget.
-Url-strukturen för detta är /customers/{id}.
-Exempel på url: http://wieg16-api.dev/customers/1
-Denna url skall då visa mig kunden med id 1 i json-format.
-## Övning 4
-Det kan vara så att man skriver ett customer_id som inte finns.
-Skriv kod som hanterar att du inte får någon träff i databasen.
-En http statuskod på 404 måste skickas och ett lämpligt meddelande i json skall skrivas ut.
-Exempel {"message": "Customer not found"}
-## Övning 5
-Skriv kod för att enbart visa kundens adress.
-Detta är en nästlad resurs och url:en skall spegla detta.
-Exempel på url: http://wieg16-api.dev/customers/1/address
-Då skall adressen för kunden med id 1 skrivas ut på skärmen i json-format.
-## Övning 6
-Datan som du hämtat hem tidigare är lite dåligt strukturerad. Det har visat sig att vi har behov av att veta vilka kunder som tillhör samma företag.
-Skapa en separat tabell för företagen (förslagsvis companies) genom att skriva en ny migrering och koppla ihop den tabellen med din customers-tabell.
-Skriv sedan kod som går igenom datan och plockar ut företagsnamnen.
-Företagsnamnen lagras sedan i den nya separata tabellen och kunder med detta företagsnamn skall få samma company_id.
-## Övning 7
-Utöka din customers.php så att man kan hämta kunder baserat på company_id.
-Om company_id anges så skall alla kunder med detta id visas.
-Exempel på url: http://wieg16-api.dev/customers?company_id=1
-Denna url skall då visa mig alla kunder med company_id 1 i json-format.
+## About Laravel
+
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+
+Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
+
+## Learning Laravel
+
+Laravel has the most extensive and thorough documentation and video tutorial library of any modern web application framework. The [Laravel documentation](https://laravel.com/docs) is thorough, complete, and makes it a breeze to get started learning the framework.
+
+If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 900 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+
+## Laravel Sponsors
+
+We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](http://patreon.com/taylorotwell):
+
+- **[Vehikl](http://vehikl.com)**
+- **[Tighten Co.](https://tighten.co)**
+- **[British Software Development](https://www.britishsoftware.co)**
+- **[Styde](https://styde.net)**
+- [Fragrantica](https://www.fragrantica.com)
+- [SOFTonSOFA](https://softonsofa.com/)
+- [User10](https://user10.com)
+- [Soumettre.fr](https://soumettre.fr/)
+
+## Contributing
+
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+
+## Security Vulnerabilities
+
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+
+## License
+
+The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
