@@ -21,6 +21,7 @@ class CustomersController extends Controller
 
     public function showCustomer($id)
     {
+
         $customer = Customer::find($id);
 
         // Övning 4. Write code so it will send a header status code 404 and screen out "Customer not found" in json-format.
@@ -40,8 +41,8 @@ class CustomersController extends Controller
 
     public function showCustomerAddress($customer_id)
     {
-        $customerAddress = CustomerAddress::find($customer_id);
-        if ($customerAddress == null) {
+        $customerAddress = DB::table('customers')->where('customer_id', '=', $customer_id)->get();
+        if (count($customerAddress) == null) {
             $code = 404;
             $response = ['message' => 'Address not found'];
             header("content-type: application/json", true, $code);
@@ -57,7 +58,7 @@ class CustomersController extends Controller
     public function showCustomersByCompanyId($company_id)
     {
         $customers = DB::table('customers')->where('company_id', '=', $company_id)->get();
-        if (count($customers) !== null) {
+        if (count($customers) == null) {
             $code = 404;
             $response = ['message' => 'No customers with this company ID'];
             header("content-type: application/json", true, $code);
