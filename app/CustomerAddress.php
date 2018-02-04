@@ -26,4 +26,8 @@ class CustomerAddress extends Model
         'company',
         'country'
     ];
+
+    public function customer() {
+        return $this->belongsTo(CustomerAddress::class);
+    }
 }

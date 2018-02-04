@@ -1,10 +1,13 @@
 <?php
+
 namespace App\Console\Commands;
+
 use App\Customer;
 use App\CustomerAddress;
 use App\Company;
 use DB;
 use Illuminate\Console\Command;
+
 class ImportCustomers extends Command
 {
     /**
@@ -51,8 +54,11 @@ class ImportCustomers extends Command
             $this->info("Inserting/updating customer with id: " . $customer['id']);
             $dbCustomer = Customer::findOrNew($customer['id']);
             $dbCustomer->fill($customer)->save();
+
             // Importing customers' addresses in customers' table (separately).
-            if ($customer['address'] == !null) {
+
+                if ($customer['address'] == !null) {
+
                 $this->info("Inserting/updating address with id: " . $customer['address']['id']);
                 $dbCustomerAddress = CustomerAddress::findOrNew($customer['address']['id']);
                 $dbCustomerAddress->fill($customer['address'])->save();
@@ -61,24 +67,22 @@ class ImportCustomers extends Command
             $this->info("Inserting/updating customer with id: " . $customer['id']);
             $companies[] = $customer['customer_company'];
         }
+
         $companies = array_unique($companies);
+
         foreach ($companies as $company) {
             $this->info("Inserting/updating company table for " . $company);
             /* @var Company $dbCompany */
             $dbCompany = Company::findOrNew($company);
             $dbCompany->company_name = $company;
-            // Another way to do it below, using fill...
-            //$dbCompany->fill(['company_name' => $company]);
+
             $dbCompany->save();
+
             //Update statement
-            DB::table('customers')->where('customer_company', '=', $dbCompany->company_name)->update(['company_id' => $dbCompany->id]);
-            /* $this->info("This is some information");
-            $this->error("This is an erro message");
-            $this->line("This is a line");
-            $this->comment("This is a comment");
-            $this->question("Is this a question?");
-            Storage::put('textfil.txt', "Some text that you may edit later.");
-            */
+            DB::table('customers')
+                ->where('customer_company', '=', $dbCompany->company_name)
+                ->update(['company_id' => $dbCompany->id]);
+
         }
     }
 }

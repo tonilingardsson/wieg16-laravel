@@ -29,16 +29,19 @@ class Customer extends Model
         'customer_due_date_period',
         'address_id'
     ];
-    /* Is this from somewhere else?
-    public function handle() {
-        $customer = Customer::find(1);
-        $customer = new Customer();
-        $customer->save();
-        $customer->delete();
-        //$customer = Customer::all();
-        //$customer = Customer::where("gender", "=", 1)-> get();
-        $this->info($customer->toJson());
-*/
+
+    public function address() {
+        return $this->hasOne(CustomerAddress::class);
+    }
+
+    public function order() {
+        return $this->hasMany(Order::class);
+    }
+
+    public function company() {
+        return $this->hasMany(Company::class);
+    }
+
 }
 
 
