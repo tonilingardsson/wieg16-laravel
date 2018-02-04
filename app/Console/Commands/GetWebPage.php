@@ -13,14 +13,14 @@ class GetWebPage extends Command
      *
      * @var string
      */
-    protected $signature = 'get:webpage {url} {file_name}';
+    protected $signature = 'get:products';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Retrieve a website and save it in a file.';
+    protected $description = 'Fetches the content of the product page and it is saved in a file.';
 
     /**
      * Create a new command instance.
@@ -39,8 +39,8 @@ class GetWebPage extends Command
      */
     public function handle()
     {
-        $url = $this->argument('url');
-        $file = $this->argument('file_name');
+        $url = $this->argument('https://www.milletech.se/invoicing/export/products');
+        $file = $this->argument('storage/app/products.json');
 
         $this->info("Initializing curl...");
         $curl = curl_init($url);
