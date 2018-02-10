@@ -20,7 +20,7 @@ class GetWebPage extends Command
      *
      * @var string
      */
-    protected $description = 'Fetches the content of the product page and it is saved in a file.';
+    protected $description = 'Fetching content of the page and saving it in a file.';
 
     /**
      * Create a new command instance.

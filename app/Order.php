@@ -12,8 +12,8 @@ class Order extends Model
     protected $fillable = [
         'increment_id',
         'id',
-        'created_at',
-        'updated_at',
+        //'created_at',
+     //   'updated_at',
         'customer_id',
         'customer_email',
         'status',
@@ -28,7 +28,7 @@ class Order extends Model
         'shipping_tax_amount',
         'shipping_description',
         'items_id',
-        'invoice_id',
+        'invoice_id'
     ];
     public function customerAddresses() {
         return $this->belongsTo(CustomerAddress::class);

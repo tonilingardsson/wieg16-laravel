@@ -25,7 +25,7 @@ class Product extends Model
         'price',
         'is_salable',
         'stock_item',
-        'group_prices_id',
+        'group_prices_id'
     ];
 
     public function groupPrice() {

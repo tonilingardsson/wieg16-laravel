@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,11 +9,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/customers', 'CustomersController@showCustomers');
 Route::get('/customers/by-company/{id}', 'CustomersController@showCustomersByCompanyId');
 Route::get('/customers/{id}', 'CustomersController@showCustomer');
-Route::get('/customers/by-company/{id}/address', 'CustomersController@showCustomerAddress'); 
+Route::get('/customers/{id}/address', 'CustomersController@showCustomerAddress');
+Route::resource('products', 'ProductController');
+Route::resource('groups', 'GroupController');
+Route::resource('group-prices', 'GroupPriceController');

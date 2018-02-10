@@ -2,11 +2,11 @@
 
 namespace App\Console\Commands;
 
+use Illuminate\Console\Command;
 use App\Customer;
 use App\CustomerAddress;
 use App\Company;
 use DB;
-use Illuminate\Console\Command;
 
 class ImportCustomers extends Command
 {

@@ -28,6 +28,6 @@ class CustomerAddress extends Model
     ];
 
     public function customer() {
-        return $this->belongsTo(CustomerAddress::class);
+        return $this->belongsTo(CustomerAddress::class);// This function connects customer with CustomerAddress table
     }
 }

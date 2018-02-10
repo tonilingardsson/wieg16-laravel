@@ -33,14 +33,17 @@ class Customer extends Model
     public function address() {
         return $this->hasOne(CustomerAddress::class);
     }
-
+    public function company() {
+        return $this->belongsTo(Company::class);
+    }
     public function order() {
         return $this->hasMany(Order::class);
     }
-
-    public function company() {
-        return $this->hasMany(Company::class);
+    public function orders() {
+        return $this->hasMany(Order::class);
     }
+
+
 
 }
 
