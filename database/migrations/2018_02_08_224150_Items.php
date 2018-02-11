@@ -15,7 +15,7 @@ class CreateItemsTable extends Migration
     public function up()
     {
         Schema::create('items', function (Blueprint $table) {
-            $table->bigInteger('id', false, true)->primary(); // the two options mean that NOT auto-increment, and UNSIGNED
+            $table->bigInteger('id', false, true)->primary();
             $table->bigInteger('order_id', false, true)->nullable();
             $table->integer('item_id')->nullable();
             $table->string('name')->nullable();

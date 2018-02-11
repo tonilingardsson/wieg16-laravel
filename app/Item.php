@@ -13,8 +13,6 @@ class Item extends Model
         'id',
         'order_id',
         'item_id',
-     //   'created_at',
-      //  'updated_at',
         'name',
         'sku',
         'qty',

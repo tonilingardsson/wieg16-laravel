@@ -12,8 +12,6 @@ class Order extends Model
     protected $fillable = [
         'increment_id',
         'id',
-        //'created_at',
-     //   'updated_at',
         'customer_id',
         'customer_email',
         'status',

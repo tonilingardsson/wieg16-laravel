@@ -9,7 +9,6 @@ class CustomerAddress extends Model
     public $incrementing = false;
     public $timestamps = false;
 
-    // Whitelisting all table fields
     protected $fillable = [
         'id',
         'customer_id',
@@ -28,6 +27,6 @@ class CustomerAddress extends Model
     ];
 
     public function customer() {
-        return $this->belongsTo(CustomerAddress::class);// This function connects customer with CustomerAddress table
+        return $this->belongsTo(CustomerAddress::class);
     }
 }

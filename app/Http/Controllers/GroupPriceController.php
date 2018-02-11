@@ -14,7 +14,7 @@ class GroupPriceController extends Controller
 
     public function create()
     {
-        // TODO: Show the form for creating a new resource
+        // This does: Show the form for creating a new resource
     }
 
     public function store(Request $request)
@@ -23,28 +23,28 @@ class GroupPriceController extends Controller
         $postData = $request->all();
         $groupPrice-fill($postData)->save();
         return response()->redirectToAction('ProductController@create');//ProductController@create es la action mostrada
-        // TODO: Store the new resource in /storage/
+        // This does: Store the new resource in /storage/
     }
 
     public function show($id)
     {
         return response()->json(GroupPrice::find($id));
-// TODO: Show a named resource
+// This does: Show a named resource
     }
 
     public function edit($id)
     {
-        // TODO: Edit a named resource, showing the form filled with its features
+        // This does: Edit a named resource, showing the form filled with its features
     }
 
     public function update(Request $request, $id)
     {
-        // TODO: Update a named resource
+        // This does: Update a named resource
     }
 
     public function destroy($id)
     {
-        // TODO: Delete a named resource from storage
+        // This does: Delete a named resource from storage
     }
 
 }

@@ -59,19 +59,19 @@ class ImportOrders extends Command
         });
         $this->info("Looping through orders...");
         foreach ($filtered as $order) {
-            $this->info("Inserting/updating order number(id): ".$order['id']);
+            $this->info("Inserting/updating order number: ".$order['id']);
             $dbOrder = Order::findOrNew($order['id']);
             $dbOrder->fill($order)->save();
             $this->info("Inserting/updating addresses...");
             // Importing billing address
             if ($order['billing_address']==!null) {
-                $this->info("Inserting/updating billing address with number(id): ".$order['billing_address']['id']);
+                $this->info("Inserting/updating billing address with number: ".$order['billing_address']['id']);
                 $dbItems = CustomerAddress::findOrNew($order['billing_address']['id']);
                 $dbItems->fill($order['billing_address'])->save();
             }
             // Importing shipping address
             if ($order['shipping_address']==!null) {
-                $this->info("Inserting/updating shipping address with number(id): ".$order['shipping_address']['id']);
+                $this->info("Inserting/updating shipping address with number: ".$order['shipping_address']['id']);
                 $dbItems = CustomerAddress::findOrNew($order['shipping_address']['id']);
                 $dbItems->fill($order['shipping_address'])->save();
             }

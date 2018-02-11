@@ -12,37 +12,37 @@ class CompanyController extends Controller
 
     public function index()
     {
-         // TODO: Display a listing of the resource
+         // This does: Display a listing of the resource
     }
 
     public function create()
     {
-        // TODO: Show the form for creating a new resource
+        // This does: Show the form for creating a new resource
     }
 
     public function store(Request $request)
     {
-        // TODO: Store the new resource in /storage/
+        // This does: Store the new resource in /storage/
     }
 
     public function show(Company $company)
     {
-        // TODO: Show a named resource
+        // This does: Show a named resource
     }
 
     public function edit(Company $company)
     {
-        // TODO: Edit a named resource, showing the form filled with its features
+        // This does: Edit a named resource, showing the form filled with its features
     }
 
     public function update(Request $request, Company $company)
     {
-        // TODO: Update a named resource
+        // This does: Update a named resource
     }
 
     public function destroy(Company $company)
     {
-        // TODO: Delete a named resource from storage
+        // This does: Delete a named resource from storage
     }
 
 }

@@ -12,13 +12,13 @@ class ProductController extends Controller
         $products = Product::all();
         return view('products.index', compact('products'))
             ->with('i', (\request()->input('page', 1)));
-        // TODO: Display a listing of the resource
+        // This does: Display a listing of the resource
     }
 
     public function create()
     {
         return view('products.create');
-        // TODO: Tengo que crear un nuevo view('groups.create')
+        // This does: Tengo que crear un nuevo view('groups.create')
     }
 
     public function store(Request $request)
@@ -27,14 +27,14 @@ class ProductController extends Controller
         $postData = $request->all();
         $product-fill($postData)->save();
         return response()->redirectToAction('ProductController@create');//ProductController@create es la action mostrada
-        // TODO: Store the new resource in /storage/
+        // This does: Store the new resource in /storage/
     }
 
     public function show($id)
     {
         $product = Product::find($id);
         return view('products.show', compact('product'));// product es la variable, y products.show es el view para group
-        // TODO: Show a named resource
+        // This does: Show a named resource
     }
 
     public function edit($id)
@@ -42,7 +42,7 @@ class ProductController extends Controller
         $product = Product::find($id);
         return view('products.edit', compact('product'));
 
-        // TODO: Edit a named resource, showing the form filled with its features
+        // This does: Edit a named resource, showing the form filled with its features
     }
 
     public function update(Request $request, $id)
@@ -52,7 +52,7 @@ class ProductController extends Controller
         Session::flash('message', 'Successfully updated product.');
 
         return response()->redirectToAction('ProductController@edit', ['id' =>$id]);
-        // TODO: Update a named resource
+        // This does: Update a named resource
     }
 
     public function destroy($id)
@@ -61,7 +61,7 @@ class ProductController extends Controller
         $product->delete();
         Session::flash('message', 'The product is deleted.');
 
-        // TODO: Delete a named resource from storage
+        // This does: Delete a named resource from storage
     }
 
 }

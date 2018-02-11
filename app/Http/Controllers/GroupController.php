@@ -16,13 +16,13 @@ class GroupController extends Controller
         $groups = Group::all();
         return view('groups.index', compact('groups'))
             ->with('i', (\request()->input('page', 1)));
-        // TODO: Display a listing of the resource
+        // This does: Display a listing of the resource
     }
 
     public function create()
     {
         return view('groups.create');
-        // TODO: Tengo que crear un nuevo view('groups.create')
+        // This does: Tengo que crear un nuevo view('groups.create')
     }
 
     public function store(Request $request)
@@ -31,14 +31,14 @@ class GroupController extends Controller
         $postData = $request->all();
         $group-fill($postData)->save();
         return response()->redirectToAction('GroupController@create');//GroupController@create es la action mostrada
-        // TODO: Store the new resource in /storage/
+        // This does: Store the new resource in /storage/
     }
 
     public function show($id)
     {
         $group = Group::find($id);
         return view('groups.show', compact('group'));// group es la variable, y groups.show es el view para group
-        // TODO: Show a named resource
+        // This does: Show a named resource
     }
 
     public function edit($id)
@@ -46,7 +46,7 @@ class GroupController extends Controller
         $group = Group::find($id);
         return view('groups.edit', compact('group'));
 
-        // TODO: Edit a named resource, showing the form filled with its features
+        // This does: Edit a named resource, showing the form filled with its features
     }
 
     public function update(Request $request, $id)
@@ -56,7 +56,7 @@ class GroupController extends Controller
         Session::flash('message', 'Successfully updated group.');
 
         return response()->redirectToAction('GroupController@edit', ['id' =>$id]);
-        // TODO: Update a named resource
+        // This does: Update a named resource
     }
 
     public function destroy($id)
@@ -65,7 +65,7 @@ class GroupController extends Controller
         $group->delete();
         Session::flash('message', 'The group is deleted.');
 
-        // TODO: Delete a named resource from storage
+        // This does: Delete a named resource from storage
     }
 
 }

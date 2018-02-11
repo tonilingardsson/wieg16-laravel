@@ -63,7 +63,7 @@ class ImportProducts extends Command
                 ->where('product_id', '=', $product['entity_id'])
                 ->delete();
             foreach ($product['group_prices'] as $price_group) {
-                $this->info("Inserting/updating Group Price with price ID: ". $price_group['price_group_id']);
+                $this->info("Inserting/updating group price with price id: ". $price_group['price_group_id']);
                 $price_group['product_id'] = $product['entity_id'];
                 $dbGroupPrice = GroupPrice::findOrNew($price_group['price_group_id']);
                 $dbGroupPrice->fill($price_group)->save();

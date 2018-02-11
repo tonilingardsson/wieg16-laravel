@@ -44,8 +44,8 @@ class GetWebPage extends Command
 
         $this->info("Initializing curl...");
         $curl = curl_init($url);
-        curl_setopt($curl, CURLOPT_HEADER, 0);              /* skickar bara tillbaka innehållet */
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);      /* Lagra data */
+        curl_setopt($curl, CURLOPT_HEADER, 0);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 
         $this->info("Sending request to:".$url);
         $response = curl_exec($curl);

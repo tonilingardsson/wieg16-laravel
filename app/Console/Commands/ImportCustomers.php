@@ -21,7 +21,7 @@ class ImportCustomers extends Command
      *
      * @var string
      */
-    protected $description = 'Import customers from json';
+    protected $description = 'Importing customers';
     /**
      * Create a new command instance.
      *
@@ -64,7 +64,7 @@ class ImportCustomers extends Command
                 $dbCustomerAddress->fill($customer['address'])->save();
             }
             // This solves Övning 6. It saves the companies info in a separate table, but linked to customers' table.
-            $this->info("Inserting/updating customer with id: " . $customer['id']);
+            $this->info("Inserting/updating company related to customer_id: " . $customer['id']);
             $companies[] = $customer['customer_company'];
         }
 
